@@ -1,0 +1,17 @@
+{
+    "name": "vendor/megamenu",
+    "description": "",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+      "MIT"
+    ],
+    "autoload": {
+      "psr-4": {
+        "vendor\\MegaMenu\\": ""
+      },
+      "files": [
+        "registration.php"
+      ]
+    }
+  }

@@ -1,0 +1,20 @@
+<?php
+/** @var \Vendor\MegaMenu\Block\Template $block */
+?>
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+?>
+<div class="account-mobile">
+    <i class="account-icon"></i>
+    <ul class="account-links">
+        <li>
+            <a class= "header_account_link" href="<?php echo $this->getUrl("customer/account");?>"><?php echo __('Account')?></a></li>
+           <?php if(!$customerSession->isLoggedIn()) :?>
+           <li><a class= "header_account_link" href="<?php echo $this->getUrl("customer/account/logout");?>"><?php echo __('Log In')?></a></li>
+           <li><a class= "header_account_link" href="<?php echo $this->getUrl("customer/account/create");?>"><?php echo __('Sign Up')?></a></li>
+           <?php else:?>
+            <li><a class= "header_account_link" href="<?php echo $this->getUrl("customer/account/login");?>"><?php echo __('Log Out')?></a></li>
+           <?php endif;?>
+        </ul>
+</div>

@@ -1,0 +1,86 @@
+<?php
+/** @var \Vendor\MegaMenu\Block\Template $block */
+?>
+
+<?php
+// Get Parent Categories
+$categorys = $this->getStoreCategories(false,false,true);
+
+ if($categorys) {
+
+
+    echo '<ul class="clearfix">';
+
+    foreach($categorys as $category){
+        
+        $children = $this->getChildCategories($category->getID());
+        
+        $catlink = '/'.$category->getUrlKey();
+
+        if(count($children) != 0){
+            echo '<li class="parent top">';
+        } else {
+            echo '<li class="top">';
+        }
+
+        echo '<a href="'.$catlink.'">';
+
+            echo $category->getName();
+
+        echo '</a>';
+
+        echo '<span class="arrow-icon"></span>';
+    
+         if(count($children) != 0) {
+
+            echo '<ul class="sub-menu">';
+
+                foreach($children as $child) {
+
+                    $grandchildren = $this->getChildCategories($child->getID());
+
+                    echo '<li>';
+        
+                    echo '<a class="semibold" href="'.$child->getUrl().'">';
+
+                        echo $child->getName($child->getID());
+
+                    echo '</a>';
+
+                    if(count($grandchildren) != 0) {
+
+                        echo '<ul class="sub-sub-menu">';
+
+                        foreach($grandchildren as $grandchild) {
+                            
+                        
+                            echo '<li>';
+            
+                                echo '<a class="regular p0" href="'.$grandchild->getUrl().'">';
+            
+                                    echo $grandchild->getName();
+            
+                                echo '</a>';
+
+                                echo '</li>';
+
+                        }
+
+                        echo '</ul>';
+
+                    }
+
+                    echo '</li>';
+                }
+             echo '</ul>';
+         }
+
+         echo '</li>';
+    
+      }
+
+      echo '</ul>';
+
+
+ }
+?>

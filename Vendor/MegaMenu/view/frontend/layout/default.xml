@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="navigation.sections" display="false" />
+        <referenceContainer name="page.top">
+            <container name="mega.menu" label="megaMenu" htmlTag="nav" htmlClass="mega-navigation js-mega-navigation" before="-">
+                <container name="menu.container" label="menuContainer" htmlTag="div" htmlClass="mega-navigation__inner">
+                    <block class="Magento\Framework\View\Element\Template" name="mega.nav.header" as="megaNavHeader" template="Vendor_MegaMenu::top.phtml" />
+                    <block class="Vendor\MegaMenu\Block\Categories" name="Vendor_MegaMenu"  template="Vendor_MegaMenu::menu.phtml" />
+                    <block class="Magento\Framework\View\Element\Template" name="mega.nav.account" as="megaNavAccount" template="Vendor_MegaMenu::account-links.phtml" />
+                    <block class="Magento\Framework\View\Element\Template" name="page.links" as="pageLinks" template="Vendor_MegaMenu::page-links.phtml" />
+                </container>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
